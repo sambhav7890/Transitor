@@ -33,14 +33,13 @@ class TableOfContentsSpec: QuickSpec {
                 it("will eventually pass") {
                     var time = "passing"
 
-                    DispatchQueue.main.asynchronously(DispatchQueue.main) {
+                    DispatchQueue.main.async {
                         time = "done"
                     }
 
                     waitUntil { done in
-                        NSThread.sleepForTimeInterval(0.5)
+                        Thread.sleep(forTimeInterval: 0.5)
                         expect(time) == "done"
-
                         done()
                     }
                 }
